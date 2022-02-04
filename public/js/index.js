@@ -18,13 +18,13 @@ slider.addEventListener("change", ({ target: { value } }) => {
   if (index >= config.animations.length) index = config.animations.length - 1;
   showEmojis(config.animations[index]);
 
-  fetch("/mood/" + value, {
+  fetch("../../mood/" + value, {
     method: "POST",
   });
 });
 
 window.addEventListener("load", async () => {
-  config = await fetch("/config").then((r) => r.json());
+  config = await fetch("../../config").then((r) => r.json());
 
   if (config.colors) {
     let root = document.documentElement;
@@ -33,7 +33,7 @@ window.addEventListener("load", async () => {
     }
   }
 
-  let mood = await fetch("/mood").then((r) => r.json());
+  let mood = await fetch("../../mood").then((r) => r.json());
 
   title.innerText = config.title;
 
